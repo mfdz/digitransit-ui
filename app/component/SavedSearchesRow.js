@@ -3,14 +3,14 @@ import React from 'react';
 
 function SavedSearchesRow({ from, to, date, time, maxtime, passengerNumber }) {
   return (
-    <div>
-      <span>{from}</span>
-      <span>{to}</span>
-      <span>{date}</span>
-      <span>{time}</span>
-      <span>{maxtime}</span>
-      <span>{passengerNumber}</span>
-    </div>
+    <tr>
+      <td>{from}</td>
+      <td>{to}</td>
+      <td>{date}</td>
+      <td>{time}</td>
+      <td>{maxtime}</td>
+      <td>{passengerNumber}</td>
+    </tr>
   );
 }
 
