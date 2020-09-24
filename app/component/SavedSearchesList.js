@@ -1,19 +1,30 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { FormattedMessage } from 'react-intl';
 import SavedSearchesRow from './SavedSearchesRow';
 
-function SavedSearchesHeader() {
+const SavedSearchesHeader = () => {
+  const header = [
+    'route-from-here',
+    'route-here',
+    'date',
+    'time',
+    'itinerary-time.title',
+    'passenger-number',
+  ];
+
   return (
     <tr>
-      <th>From</th>
-      <th>To</th>
-      <th>Date</th>
-      <th>Time</th>
-      <th>Maxtime</th>
-      <th>Passenger number</th>
+      {header.map(item => {
+        return (
+          <th key={item} className="save-search-header">
+            <FormattedMessage id={item} defaultMessage="" />
+          </th>
+        );
+      })}
     </tr>
   );
-}
+};
 
 const SavedSearchesList = ({ list }) => {
   return (
