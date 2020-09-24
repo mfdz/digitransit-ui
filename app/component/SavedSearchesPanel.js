@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import SavedSearchesList from './SavedSearchesList';
 
-function SavedSearchesPanel() {
+const SavedSearchesPanel = () => {
   // The data list should be fetched from the server.
   const list = [
     {
@@ -30,7 +30,7 @@ function SavedSearchesPanel() {
       <SavedSearchesList list={list} />
     </div>
   );
-}
+};
 
 SavedSearchesPanel.contextTypes = {
   config: PropTypes.object,

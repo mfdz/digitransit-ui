@@ -15,7 +15,7 @@ function SavedSearchesHeader() {
   );
 }
 
-function SavedSearchesList({ list }) {
+const SavedSearchesList = ({ list }) => {
   return (
     <table>
       <thead>
@@ -36,7 +36,7 @@ function SavedSearchesList({ list }) {
       </tbody>
     </table>
   );
-}
+};
 
 SavedSearchesList.propTypes = {
   list: PropTypes.array.isRequired,

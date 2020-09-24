@@ -1,7 +1,14 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-function SavedSearchesRow({ from, to, date, time, maxtime, passengerNumber }) {
+const SavedSearchesRow = ({
+  from,
+  to,
+  date,
+  time,
+  maxtime,
+  passengerNumber,
+}) => {
   return (
     <tr>
       <td>{from}</td>
@@ -12,7 +19,7 @@ function SavedSearchesRow({ from, to, date, time, maxtime, passengerNumber }) {
       <td>{passengerNumber}</td>
     </tr>
   );
-}
+};
 
 SavedSearchesRow.propTypes = {
   from: PropTypes.string.isRequired,
