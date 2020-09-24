@@ -10,13 +10,13 @@ const SavedSearchesRow = ({
   passengerNumber,
 }) => {
   return (
-    <tr>
-      <td>{from}</td>
-      <td>{to}</td>
-      <td>{date}</td>
-      <td>{time}</td>
-      <td>{maxtime}</td>
-      <td>{passengerNumber}</td>
+    <tr className="saved-search-row">
+      <td className="saved-search-data">{from}</td>
+      <td className="saved-search-data">{to}</td>
+      <td className="saved-search-data">{date}</td>
+      <td className="saved-search-data">{time}</td>
+      <td className="saved-search-data text-center">{maxtime}</td>
+      <td className="saved-search-data text-center">{passengerNumber}</td>
     </tr>
   );
 };
