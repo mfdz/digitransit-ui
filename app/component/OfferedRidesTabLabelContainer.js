@@ -15,10 +15,7 @@ export default function OfferedRidesTabLabelContainer({ classes, onClick }) {
         height={1.3}
         width={1.3}
       />
-      <FormattedMessage
-        id="your-offered-rides"
-        defaultMessage="Offered rides"
-      />
+      <FormattedMessage id="offered-rides" defaultMessage="Offered rides" />
     </li>
   );
 }
