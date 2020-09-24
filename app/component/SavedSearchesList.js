@@ -4,32 +4,43 @@ import SavedSearchesRow from './SavedSearchesRow';
 
 function SavedSearchesHeader() {
   return (
-    <div>
-      <span>From</span>
-      <span>To</span>
-      <span>Date</span>
-      <span>Time</span>
-      <span>Maxtime</span>
-      <span>Passenger number</span>
-    </div>
+    <tr>
+      <th>From</th>
+      <th>To</th>
+      <th>Date</th>
+      <th>Time</th>
+      <th>Maxtime</th>
+      <th>Passenger number</th>
+    </tr>
   );
 }
 
-function SavedSearchesList() {
+function SavedSearchesList({ list }) {
   return (
-    <>
-      <SavedSearchesHeader />
-      <SavedSearchesRow
-        from="HABI"
-        to="EZIS"
-        date={13124235234}
-        time={123423}
-        maxtime={234523}
-        passengerNumber={2}
-      />
-    </>
+    <table>
+      <thead>
+        <SavedSearchesHeader />
+      </thead>
+      <tbody>
+        {list.map(row => (
+          <SavedSearchesRow
+            key={row.index}
+            from={row.from}
+            to={row.to}
+            date={row.date}
+            time={row.time}
+            maxtime={row.maxtime}
+            passengerNumber={row.passengerNumber}
+          />
+        ))}
+      </tbody>
+    </table>
   );
 }
+
+SavedSearchesList.propTypes = {
+  list: PropTypes.array.isRequired,
+};
 
 SavedSearchesList.contextTypes = {
   config: PropTypes.object,
