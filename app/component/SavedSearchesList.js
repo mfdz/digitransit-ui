@@ -17,7 +17,7 @@ const SavedSearchesHeader = () => {
     <tr>
       {header.map(item => {
         return (
-          <th key={item} className="save-search-header">
+          <th key={item} className="saved-search-header">
             <FormattedMessage id={item} defaultMessage="" />
           </th>
         );
@@ -28,7 +28,7 @@ const SavedSearchesHeader = () => {
 
 const SavedSearchesList = ({ list }) => {
   return (
-    <table>
+    <table className="saved-search-table">
       <thead>
         <SavedSearchesHeader />
       </thead>
