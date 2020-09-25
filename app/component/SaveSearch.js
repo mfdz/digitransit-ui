@@ -6,6 +6,7 @@ import { routerShape } from 'react-router';
 import Icon from './Icon';
 import Loading from './Loading';
 import LoginButton from './LoginButton';
+import SavedSearchesPanel from './SavedSearchesPanel';
 
 export default class SaveSearch extends React.Component {
   static contextTypes = {
@@ -72,39 +73,24 @@ export default class SaveSearch extends React.Component {
     });
   }
 
-  renderSuccessMessage(origin, destination, departure) {
+  renderSuccessMessage() {
     return (
       <div className="sidePanelText">
         <h2>
-          <FormattedMessage id="thank-you" defaultMessage="Thank you!" />
+          <FormattedMessage
+            id="asd"
+            defaultMessage="Your search was saved successfully!"
+          />
         </h2>
+        <div className="padding-vertical-normal">
+          <h3>Your already saved searches:</h3>
+          <SavedSearchesPanel />
+        </div>
         <div>
-          <p>
-            <h2>
-              <FormattedMessage id="your-search" defaultMessage="Your search" />
-            </h2>
-            <p>
-              <b>
-                <FormattedMessage id="origin" defaultMessage="Origin" />
-              </b>
-              : {origin} <FormattedMessage id="at-time" defaultMessage="at" />{' '}
-              {departure}{' '}
-              <FormattedMessage id="time-oclock" defaultMessage=" " />
-              <br />
-              <b>
-                <FormattedMessage
-                  id="destination"
-                  defaultMessage="Destination"
-                />
-              </b>
-              : {destination}
-            </p>
-          </p>
           <button type="submit" className="sidePanel-btn" onClick={this.close}>
             <FormattedMessage id="close" defaultMessage="Close" />
           </button>
         </div>
-        {this.renderSavedSearches()}
       </div>
     );
   }
@@ -158,14 +144,6 @@ export default class SaveSearch extends React.Component {
     );
   };
 
-  renderSavedSearches = () => {
-    return (
-      <div>
-        <h2>Your already saved searches:</h2>
-      </div>
-    );
-  };
-
   renderBody() {
     const userLoggedIn = false;
     const { formState } = this.state;
@@ -183,7 +161,7 @@ export default class SaveSearch extends React.Component {
       return <Loading />;
     }
     if (formState === 'success') {
-      return this.renderSuccessMessage(origin, destination, departure);
+      return this.renderSuccessMessage();
     }
     return null;
   }
