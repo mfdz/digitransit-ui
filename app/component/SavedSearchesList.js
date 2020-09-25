@@ -4,7 +4,7 @@ import { FormattedMessage } from 'react-intl';
 import SavedRow from './SavedRow';
 
 const SavedSearchesHeader = () => {
-  const header = ['route-from-here', 'route-here', 'date', 'time'];
+  const header = ['date', 'time', 'route-from-here', 'route-here'];
 
   return (
     <tr>
