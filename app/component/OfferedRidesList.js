@@ -3,13 +3,12 @@ import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import SavedRow from './SavedRow';
 
-const SavedSearchesHeader = () => {
+const OfferedRidesHeader = () => {
   const header = [
     'route-from-here',
     'route-here',
     'date',
     'time',
-    'itinerary-time.title',
     'passenger-number',
   ];
 
@@ -26,11 +25,11 @@ const SavedSearchesHeader = () => {
   );
 };
 
-const SavedSearchesList = ({ list }) => {
+const OfferedRidesList = ({ list }) => {
   return (
     <table className="saved-search-table">
       <thead>
-        <SavedSearchesHeader />
+        <OfferedRidesHeader />
       </thead>
       <tbody>
         {list.map(row => (
@@ -40,7 +39,6 @@ const SavedSearchesList = ({ list }) => {
             to={row.to}
             date={row.date}
             time={row.time}
-            maxtime={row.maxtime}
             passengerNumber={row.passengerNumber}
           />
         ))}
@@ -49,12 +47,12 @@ const SavedSearchesList = ({ list }) => {
   );
 };
 
-SavedSearchesList.propTypes = {
+OfferedRidesList.propTypes = {
   list: PropTypes.array.isRequired,
 };
 
-SavedSearchesList.contextTypes = {
+OfferedRidesList.contextTypes = {
   config: PropTypes.object,
 };
 
-export default SavedSearchesList;
+export default OfferedRidesList;

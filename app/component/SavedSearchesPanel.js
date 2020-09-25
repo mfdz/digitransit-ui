@@ -3,7 +3,7 @@ import React from 'react';
 import SavedSearchesList from './SavedSearchesList';
 
 const SavedSearchesPanel = () => {
-  // The data list should be fetched from the server.
+  // The data list should be fetched from the server. search_list.php
   const list = [
     {
       index: 1,
