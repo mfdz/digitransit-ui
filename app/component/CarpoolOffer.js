@@ -7,6 +7,7 @@ import Icon from './Icon';
 import Checkbox from './Checkbox';
 import logo from '../../static/img/fahrgemeinschaft-de-rund.png';
 import Loading from './Loading';
+import OfferedRidesPanel from './OfferedRidesPanel';
 
 export default class CarpoolOffer extends React.Component {
   static contextTypes = {
@@ -182,8 +183,7 @@ export default class CarpoolOffer extends React.Component {
               values={{ origin, destination }}
               defaultMessage="Your offer from {origin} to {destination} was added."
             />
-          </p>
-          <p>
+            <br />
             {isRegularly ? (
               <FormattedMessage
                 id="chosen-times-recurring"
@@ -204,6 +204,10 @@ export default class CarpoolOffer extends React.Component {
               defaultMessage="Your offer will be deleted after the day of the ride. Regular ones will be removed after three months."
             />
           </p>
+        </div>
+        <div className="padding-vertical-normal">
+          <h2>Your already added carpool offers:</h2>
+          <OfferedRidesPanel />
         </div>
         <button type="submit" className="sidePanel-btn" onClick={this.close}>
           <FormattedMessage id="close" defaultMessage="Close" />
