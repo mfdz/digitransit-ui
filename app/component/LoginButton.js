@@ -7,16 +7,16 @@ import Icon from './Icon';
 export default function LoginButton({ isMobile, className }) {
   return (
     <div className={isMobile ? 'offcanvas-section' : 'right-border'}>
-      <button className={cx('noborder', className)}>
-        <a href="/login">
+      <a href="/login">
+        <button className={cx('noborder', className)}>
           <div className="top-bar-login">
             <div className="login-icon">
               <Icon img="icon-icon_user" />
             </div>
             <FormattedMessage id="login" defaultMessage="login" />
           </div>
-        </a>
-      </button>
+        </button>
+      </a>
     </div>
   );
 }
