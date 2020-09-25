@@ -5,10 +5,10 @@ import SavedRow from './SavedRow';
 
 const OfferedRidesHeader = () => {
   const header = [
-    'route-from-here',
-    'route-here',
     'date',
     'time',
+    'route-from-here',
+    'route-here',
     'passenger-number',
   ];
 
