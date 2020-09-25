@@ -3,7 +3,7 @@ import React from 'react';
 import OfferedRidesList from './OfferedRidesList';
 
 function OfferedRidesPanel() {
-  // The data list should be fetched from the server. ride_offer.php
+  // The data list should be fetched from the server. offer_list.php
   const list = [
     {
       index: 1,

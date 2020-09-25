@@ -4,14 +4,7 @@ import { FormattedMessage } from 'react-intl';
 import SavedRow from './SavedRow';
 
 const SavedSearchesHeader = () => {
-  const header = [
-    'route-from-here',
-    'route-here',
-    'date',
-    'time',
-    'itinerary-time.title',
-    'passenger-number',
-  ];
+  const header = ['route-from-here', 'route-here', 'date', 'time'];
 
   return (
     <tr>
@@ -40,8 +33,6 @@ const SavedSearchesList = ({ list }) => {
             to={row.to}
             date={row.date}
             time={row.time}
-            maxtime={row.maxtime}
-            passengerNumber={row.passengerNumber}
           />
         ))}
       </tbody>
