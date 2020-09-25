@@ -11,8 +11,6 @@ const SavedSearchesPanel = () => {
       to: 'Neckar',
       date: 1601019508,
       time: 1601019508,
-      maxtime: 20,
-      passengerNumber: 2,
     },
     {
       index: 2,
@@ -20,8 +18,6 @@ const SavedSearchesPanel = () => {
       to: 'Tübingen',
       date: 1601030308,
       time: 1601030308,
-      maxtime: 48,
-      passengerNumber: 4,
     },
   ];
 

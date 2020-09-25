@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import moment from 'moment';
 
-const SavedRow = ({ from, to, date, time, maxtime, passengerNumber }) => {
+const SavedRow = ({ from, to, date, time, passengerNumber }) => {
   return (
     <tr className="saved-search-row">
       <td className="saved-search-data">{from}</td>
@@ -13,10 +13,9 @@ const SavedRow = ({ from, to, date, time, maxtime, passengerNumber }) => {
       <td className="saved-search-data text-center">
         {moment.unix(time).format('hh:mm')}
       </td>
-      {maxtime !== 0 && (
-        <td className="saved-search-data text-center">{maxtime} Min</td>
+      {passengerNumber !== 0 && (
+        <td className="saved-search-data text-center">{passengerNumber}</td>
       )}
-      <td className="saved-search-data text-center">{passengerNumber}</td>
     </tr>
   );
 };
@@ -26,12 +25,11 @@ SavedRow.propTypes = {
   to: PropTypes.string.isRequired,
   date: PropTypes.number.isRequired,
   time: PropTypes.number.isRequired,
-  maxtime: PropTypes.number,
-  passengerNumber: PropTypes.number.isRequired,
+  passengerNumber: PropTypes.number,
 };
 
 SavedRow.defaultProps = {
-  maxtime: 0,
+  passengerNumber: 0,
 };
 
 SavedRow.contextTypes = {
