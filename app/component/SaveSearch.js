@@ -33,29 +33,19 @@ export default class SaveSearch extends React.Component {
 
   finishForm = e => {
     e.preventDefault();
-    /*
-    const carpoolOffer = {
-      origin: {
-        label: this.props.from.name,
-        lat: this.props.from.lat,
-        lon: this.props.from.lon,
-      },
-      destination: {
-        label: this.props.to.name,
-        lat: this.props.to.lat,
-        lon: this.props.to.lon,
-      },
-      time: {
-        departureTime: new Moment(this.props.start).format('HH:mm'),
-      },
+
+    const savedSearch = {
+      from: this.props.from,
+      to: this.props.to,
+      datetime: this.props.start,
     };
 
     this.setState({ formState: 'sending' });
-    
-    fetch('/saved-searches', {
+
+    fetch('/rides/save_search.php', {
       method: 'POST',
       headers: new Headers({ 'content-type': 'application/json' }),
-      body: JSON.stringify(carpoolOffer),
+      body: JSON.stringify(savedSearch),
       // eslint-disable-next-line func-names
     }).then(response => {
       if (response.status === 200) {
@@ -63,7 +53,6 @@ export default class SaveSearch extends React.Component {
       }
       return response.json();
     });
-     */
   };
 
   close() {
