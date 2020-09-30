@@ -26,7 +26,10 @@ export default class SaveSearch extends React.Component {
     super(props);
     this.state = {
       formState: 'initial',
+      time: new Moment(props.start).format('HH:MM'),
+      date: new Moment(props.start).format('YYYY-MM-DD'),
     };
+    this.handleInputChange = this.handleInputChange.bind(this);
     this.finishForm = this.finishForm.bind(this);
     this.close = this.close.bind(this);
   }
@@ -37,7 +40,8 @@ export default class SaveSearch extends React.Component {
     const savedSearch = {
       from: this.props.from,
       to: this.props.to,
-      datetime: this.props.start,
+      date: this.state.date,
+      time: this.state.time,
     };
 
     this.setState({ formState: 'sending' });
@@ -54,6 +58,16 @@ export default class SaveSearch extends React.Component {
       return response.json();
     });
   };
+
+  handleInputChange(event) {
+    const {
+      target: { name, value },
+    } = event;
+
+    this.setState({
+      [name]: value,
+    });
+  }
 
   close() {
     this.context.router.goBack();
@@ -84,7 +98,7 @@ export default class SaveSearch extends React.Component {
     );
   }
 
-  renderForm(origin, destination, departure) {
+  renderForm(origin, destination) {
     return (
       <form onSubmit={this.finishForm} className="sidePanelText">
         <h2>
@@ -94,8 +108,32 @@ export default class SaveSearch extends React.Component {
           <b>
             <FormattedMessage id="origin" defaultMessage="Origin" />
           </b>
-          : {origin} <FormattedMessage id="at-time" defaultMessage="at" />{' '}
-          {departure} <FormattedMessage id="time-oclock" defaultMessage=" " />
+          : {origin}
+          <br />
+          <label htmlFor="departure-date">
+            <FormattedMessage
+              id="asd"
+              defaultMessage="Choose date other than {date}"
+              values={{ date: this.state.date }}
+            />
+            <input
+              type="date"
+              name="departure-date"
+              onChange={this.handleInputChange}
+            />
+          </label>
+          <label htmlFor="departure-time">
+            <FormattedMessage
+              id="asd"
+              defaultMessage="Choose time other than {time}"
+              values={{ time: this.state.time }}
+            />
+            <input
+              type="time"
+              name="departure-time"
+              // TODO add: onChange={}
+            />
+          </label>
           <br />
           <b>
             <FormattedMessage id="destination" defaultMessage="Destination" />
@@ -134,7 +172,7 @@ export default class SaveSearch extends React.Component {
   };
 
   renderBody() {
-    const userLoggedIn = false;
+    const userLoggedIn = true;
     const { formState } = this.state;
     const origin = this.props.from.name || this.props.from.split('::')[0];
     const destination = this.props.to.name || this.props.to.split('::')[0];
@@ -144,7 +182,7 @@ export default class SaveSearch extends React.Component {
       return this.renderLogin(origin, destination, departure);
     }
     if (formState === 'initial') {
-      return this.renderForm(origin, destination, departure);
+      return this.renderForm(origin, destination);
     }
     if (formState === 'sending') {
       return <Loading />;
