@@ -3,24 +3,29 @@ import React from 'react';
 import SavedSearchesList from './SavedSearchesList';
 
 const SavedSearchesPanel = () => {
-  let list = [];
-  fetch('/rides/list_saved_searches.php', {
-    method: 'GET',
-    headers: new Headers({ 'content-type': 'application/json' }),
-    body: JSON.stringify(),
-    // eslint-disable-next-line func-names
-  }).then(response => {
-    if (!response.status === 200) {
-      return response.json();
-    }
-    // TODO check: console.log(response);
-    list = response;
-    return (
-      <div className="frontpage-panel fullscreen">
-        <SavedSearchesList list={list} />
-      </div>
-    );
-  });
+  // The data list should be fetched from the server. search_list.php
+  const list = [
+    {
+      index: 1,
+      from: 'Stuttgart',
+      to: 'Neckar',
+      date: 1601019508,
+      time: 1601019508,
+    },
+    {
+      index: 2,
+      from: 'Herrenberg',
+      to: 'Tübingen',
+      date: 1601030308,
+      time: 1601030308,
+    },
+  ];
+
+  return (
+    <div className="frontpage-panel fullscreen">
+      <SavedSearchesList list={list} />
+    </div>
+  );
 };
 
 SavedSearchesPanel.contextTypes = {
