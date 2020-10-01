@@ -74,6 +74,11 @@ const AppBarLarge = (
                   messageId: 'logout',
                   href: '/logout',
                 },
+                {
+                  key: 'dropdown-item-2',
+                  messageId: 'profile',
+                  href: '/profile',
+                },
               ]}
             />
           ))}

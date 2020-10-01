@@ -68,6 +68,11 @@ function MainMenu(props, { config, intl }) {
                 messageId: 'logout',
                 href: '/logout',
               },
+              {
+                key: 'dropdown-item-2',
+                messageId: 'profile',
+                href: '/profile',
+              },
             ]}
             isMobile
           />
