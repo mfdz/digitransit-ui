@@ -110,31 +110,24 @@ export default class SaveSearch extends React.Component {
           </b>
           : {origin}
           <br />
-          <label htmlFor="departure-date">
-            <FormattedMessage
-              id="asd"
-              defaultMessage="Choose date other than {date}"
-              values={{ date: this.state.date }}
-            />
+          <label htmlFor="date">
+            <FormattedMessage id="asd" defaultMessage="Selected date:" />
             <input
               type="date"
-              name="departure-date"
+              name="date"
               onChange={this.handleInputChange}
+              value={this.state.date}
             />
           </label>
-          <label htmlFor="departure-time">
-            <FormattedMessage
-              id="asd"
-              defaultMessage="Choose time other than {time}"
-              values={{ time: this.state.time }}
-            />
+          <label htmlFor="time">
+            <FormattedMessage id="asd" defaultMessage="Selected time:" />
             <input
               type="time"
-              name="departure-time"
-              // TODO add: onChange={}
+              name="time"
+              onChange={this.handleInputChange}
+              value={this.state.time}
             />
           </label>
-          <br />
           <b>
             <FormattedMessage id="destination" defaultMessage="Destination" />
           </b>
