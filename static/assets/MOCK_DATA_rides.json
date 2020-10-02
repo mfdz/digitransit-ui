@@ -1,0 +1,7 @@
+[
+{"id":1,"from":"Bukor","to":"Karajeun","date":"2019-11-18","time":"2:49","passengerNumber": 1},
+{"id":2,"from":"Palmira","to":"Dulyapino","date":"2019-12-02","time":"1:26","passengerNumber":  3},
+{"id":3,"from":"Banjar Penyalin","to":"Warugunung","date":"2020-04-01","time":"11:48","passengerNumber": 2},
+{"id":4,"from":"Sulangan","to":"San Vicente","date":"2019-10-29","time":"9:40","passengerNumber": 4},
+{"id":5,"from":"Fort McMurray","to":"Cikuda","date":"2020-02-22","time":"14:46","passengerNumber": 2}
+]
