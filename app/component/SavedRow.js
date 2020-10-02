@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import moment from 'moment';
 
-const SavedRow = ({ from, to, date, time, passengerNumber }) => {
+const SavedRow = ({ from, to, date, time, passengerNumber, editable }) => {
   return (
     <tr className="saved-search-row">
       <td className="saved-search-data text-center">
@@ -16,6 +16,8 @@ const SavedRow = ({ from, to, date, time, passengerNumber }) => {
       {passengerNumber !== 0 && (
         <td className="saved-search-data text-center">{passengerNumber}</td>
       )}
+      {editable && <td>EDIT</td>}
+      {editable && <td>DELETE</td>}
     </tr>
   );
 };
@@ -26,10 +28,12 @@ SavedRow.propTypes = {
   date: PropTypes.number.isRequired,
   time: PropTypes.number.isRequired,
   passengerNumber: PropTypes.number,
+  editable: PropTypes.bool,
 };
 
 SavedRow.defaultProps = {
   passengerNumber: 0,
+  editable: false,
 };
 
 SavedRow.contextTypes = {
