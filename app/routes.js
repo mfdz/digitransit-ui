@@ -173,39 +173,6 @@ export default config => {
           ]).then(([title, content]) => cb(null, { title, content }));
         }}
       />
-      <Route
-        path="/profile"
-        getComponents={(location, cb) => {
-          Promise.all([
-            Promise.resolve(Title),
-            import(/* webpackChunkName: "profile" */ './component/ProfilePage').then(
-              getDefault,
-            ),
-          ]).then(([title, content]) => cb(null, { title, content }));
-        }}
-      />
-      <Route
-        path="/saved-searches"
-        getComponents={(location, cb) => {
-          Promise.all([
-            Promise.resolve(Title),
-            import(/* webpackChunkName: "saved-searches" */ './component/SavedSearchesPage').then(
-              getDefault,
-            ),
-          ]).then(([title, content]) => cb(null, { title, content }));
-        }}
-      />
-      <Route
-        path="/offered-rides"
-        getComponents={(location, cb) => {
-          Promise.all([
-            Promise.resolve(Title),
-            import(/* webpackChunkName: "offered-rides" */ './component/OfferedRidesPage').then(
-              getDefault,
-            ),
-          ]).then(([title, content]) => cb(null, { title, content }));
-        }}
-      />
       {!config.URL.API_URL.includes('/api.') && (
         <Route
           path="/admin"

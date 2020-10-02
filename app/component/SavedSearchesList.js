@@ -37,6 +37,7 @@ const SavedSearchesList = ({ list }) => {
             to={row.to}
             date={row.date}
             time={row.time}
+            editable
           />
         ))}
       </tbody>
