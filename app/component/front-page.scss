@@ -603,3 +603,21 @@ svg.icon.footer-icon {
   -ms-transform: rotate(-180deg);
   transform: rotate(-180deg);
 }
+
+.saved-search-table {
+  width: 95%;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+
+  .saved-search-header {
+    font-weight: $font-weight-book;
+    font-size: $font-size-xxsmall;
+  }
+
+  .saved-search-row {
+    border-bottom: solid 0.5px darkgray;
+    font-size: $font-size-xsmall;
+    line-height: $padding-xlarge;
+  }
+}

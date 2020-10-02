@@ -6,6 +6,7 @@ import { routerShape } from 'react-router';
 import Icon from './Icon';
 import Loading from './Loading';
 import LoginButton from './LoginButton';
+import SavedSearchesPanel from './SavedSearchesPanel';
 
 export default class SaveSearch extends React.Component {
   static contextTypes = {
@@ -25,36 +26,30 @@ export default class SaveSearch extends React.Component {
     super(props);
     this.state = {
       formState: 'initial',
+      time: new Moment(props.start).format('HH:MM'),
+      date: new Moment(props.start).format('YYYY-MM-DD'),
     };
+    this.handleInputChange = this.handleInputChange.bind(this);
     this.finishForm = this.finishForm.bind(this);
     this.close = this.close.bind(this);
   }
 
   finishForm = e => {
     e.preventDefault();
-    /*
-    const carpoolOffer = {
-      origin: {
-        label: this.props.from.name,
-        lat: this.props.from.lat,
-        lon: this.props.from.lon,
-      },
-      destination: {
-        label: this.props.to.name,
-        lat: this.props.to.lat,
-        lon: this.props.to.lon,
-      },
-      time: {
-        departureTime: new Moment(this.props.start).format('HH:mm'),
-      },
+
+    const savedSearch = {
+      from: this.props.from,
+      to: this.props.to,
+      date: this.state.date,
+      time: this.state.time,
     };
 
     this.setState({ formState: 'sending' });
-    
-    fetch('/saved-searches', {
+
+    fetch('/rides/save_search.php', {
       method: 'POST',
       headers: new Headers({ 'content-type': 'application/json' }),
-      body: JSON.stringify(carpoolOffer),
+      body: JSON.stringify(savedSearch),
       // eslint-disable-next-line func-names
     }).then(response => {
       if (response.status === 200) {
@@ -62,8 +57,17 @@ export default class SaveSearch extends React.Component {
       }
       return response.json();
     });
-     */
   };
+
+  handleInputChange(event) {
+    const {
+      target: { name, value },
+    } = event;
+
+    this.setState({
+      [name]: value,
+    });
+  }
 
   close() {
     this.context.router.goBack();
@@ -72,44 +76,29 @@ export default class SaveSearch extends React.Component {
     });
   }
 
-  renderSuccessMessage(origin, destination, departure) {
+  renderSuccessMessage() {
     return (
       <div className="sidePanelText">
         <h2>
-          <FormattedMessage id="thank-you" defaultMessage="Thank you!" />
+          <FormattedMessage
+            id="asd"
+            defaultMessage="Your search was saved successfully!"
+          />
         </h2>
+        <div className="padding-vertical-normal">
+          <h3>Your already saved searches:</h3>
+          <SavedSearchesPanel />
+        </div>
         <div>
-          <p>
-            <h2>
-              <FormattedMessage id="your-search" defaultMessage="Your search" />
-            </h2>
-            <p>
-              <b>
-                <FormattedMessage id="origin" defaultMessage="Origin" />
-              </b>
-              : {origin} <FormattedMessage id="at-time" defaultMessage="at" />{' '}
-              {departure}{' '}
-              <FormattedMessage id="time-oclock" defaultMessage=" " />
-              <br />
-              <b>
-                <FormattedMessage
-                  id="destination"
-                  defaultMessage="Destination"
-                />
-              </b>
-              : {destination}
-            </p>
-          </p>
           <button type="submit" className="sidePanel-btn" onClick={this.close}>
             <FormattedMessage id="close" defaultMessage="Close" />
           </button>
         </div>
-        {this.renderSavedSearches()}
       </div>
     );
   }
 
-  renderForm(origin, destination, departure) {
+  renderForm(origin, destination) {
     return (
       <form onSubmit={this.finishForm} className="sidePanelText">
         <h2>
@@ -119,9 +108,26 @@ export default class SaveSearch extends React.Component {
           <b>
             <FormattedMessage id="origin" defaultMessage="Origin" />
           </b>
-          : {origin} <FormattedMessage id="at-time" defaultMessage="at" />{' '}
-          {departure} <FormattedMessage id="time-oclock" defaultMessage=" " />
+          : {origin}
           <br />
+          <label htmlFor="date">
+            <FormattedMessage id="asd" defaultMessage="Selected date:" />
+            <input
+              type="date"
+              name="date"
+              onChange={this.handleInputChange}
+              value={this.state.date}
+            />
+          </label>
+          <label htmlFor="time">
+            <FormattedMessage id="asd" defaultMessage="Selected time:" />
+            <input
+              type="time"
+              name="time"
+              onChange={this.handleInputChange}
+              value={this.state.time}
+            />
+          </label>
           <b>
             <FormattedMessage id="destination" defaultMessage="Destination" />
           </b>
@@ -158,16 +164,8 @@ export default class SaveSearch extends React.Component {
     );
   };
 
-  renderSavedSearches = () => {
-    return (
-      <div>
-        <h2>Your already saved searches:</h2>
-      </div>
-    );
-  };
-
   renderBody() {
-    const userLoggedIn = false;
+    const userLoggedIn = true;
     const { formState } = this.state;
     const origin = this.props.from.name || this.props.from.split('::')[0];
     const destination = this.props.to.name || this.props.to.split('::')[0];
@@ -177,13 +175,13 @@ export default class SaveSearch extends React.Component {
       return this.renderLogin(origin, destination, departure);
     }
     if (formState === 'initial') {
-      return this.renderForm(origin, destination, departure);
+      return this.renderForm(origin, destination);
     }
     if (formState === 'sending') {
       return <Loading />;
     }
     if (formState === 'success') {
-      return this.renderSuccessMessage(origin, destination, departure);
+      return this.renderSuccessMessage();
     }
     return null;
   }
