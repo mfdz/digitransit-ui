@@ -79,6 +79,16 @@ const AppBarLarge = (
                   messageId: 'profile',
                   href: '/profile',
                 },
+                {
+                  key: 'dropdown-item-3',
+                  messageId: 'saved-searches',
+                  href: '/saved-searches',
+                },
+                {
+                  key: 'dropdown-item-4',
+                  messageId: 'offered-rides',
+                  href: '/offered-rides',
+                },
               ]}
             />
           ))}
