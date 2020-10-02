@@ -32,7 +32,7 @@ const SavedSearchesList = ({ list }) => {
       <tbody>
         {list.map(row => (
           <SavedRow
-            key={row.index}
+            key={row.id}
             from={row.from}
             to={row.to}
             date={row.date}
