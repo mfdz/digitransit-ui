@@ -17,13 +17,13 @@ const renderButtons = () => {
 
 const SavedRow = ({ from, to, date, time, passengerNumber, editable }) => {
   return (
-    <tr className="saved-search-row">
-      <td className="saved-search-data text-center">{date}</td>
-      <td className="saved-search-data text-center">{time}</td>
+    <tr className="saved-search-row text-center">
+      <td className="saved-search-data">{date}</td>
+      <td className="saved-search-data">{time}</td>
       <td className="saved-search-data">{from}</td>
       <td className="saved-search-data">{to}</td>
       {passengerNumber !== 0 && (
-        <td className="saved-search-data text-center">{passengerNumber}</td>
+        <td className="saved-search-data">{passengerNumber}</td>
       )}
       {editable && renderButtons()}
     </tr>
