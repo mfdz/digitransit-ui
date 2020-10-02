@@ -7,10 +7,10 @@ import SavedRow from './SavedRow';
 
 const SavedSearchesPage = () => {
   const header = [
-    'route-from-here',
-    'route-here',
     'date',
     'time',
+    'route-from-here',
+    'route-here',
     'edit',
     'delete',
   ];
