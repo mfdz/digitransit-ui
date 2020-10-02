@@ -457,6 +457,12 @@ svg.icon.footer-icon {
   margin-bottom: 80px;
 }
 
+.saved-page {
+  display: flex;
+  flex-direction: column;
+  margin: $padding-xlarge;
+}
+
 .about-page {
   display: flex;
   flex-direction: column;
