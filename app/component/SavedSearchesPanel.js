@@ -1,13 +1,30 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useState } from 'react';
 import SavedSearchesList from './SavedSearchesList';
+import SavedSearchDetail from './SavedSearchDetail';
 import list from '../../static/assets/MOCK_DATA';
 
+let currentId;
+
 const SavedSearchesPanel = () => {
-  // The data list should be fetched from the server. search_list.php
+  const [renderComponent, setRenderComponent] = useState('list');
+
+  const toDetail = id => {
+    currentId = id;
+    setRenderComponent('details');
+  };
+
+  const toList = () => {
+    setRenderComponent('list');
+  };
+
   return (
     <div className="frontpage-panel fullscreen">
-      <SavedSearchesList list={list} />
+      {renderComponent === 'list' ? (
+        <SavedSearchesList list={list} toDetail={toDetail} />
+      ) : (
+        <SavedSearchDetail toList={toList} id={currentId} />
+      )}
     </div>
   );
 };

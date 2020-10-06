@@ -2,9 +2,12 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import Icon from './Icon';
 
-const SavedRow = ({ from, to, date, time, passengerNumber }) => {
+const SavedRow = ({ from, to, date, time, passengerNumber, toDetail, id }) => {
   return (
-    <tr className="saved-search-row text-center">
+    <tr
+      className="saved-search-row text-center cursor-pointer"
+      onClick={() => toDetail(id)}
+    >
       <td className="saved-search-data">{date}</td>
       <td className="saved-search-data">{time}</td>
       <td className="saved-search-data">{from}</td>
@@ -25,6 +28,8 @@ SavedRow.propTypes = {
   date: PropTypes.string.isRequired,
   time: PropTypes.string.isRequired,
   passengerNumber: PropTypes.number,
+  toDetail: PropTypes.func,
+  id: PropTypes.number,
 };
 
 SavedRow.defaultProps = {

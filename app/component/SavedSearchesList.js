@@ -21,7 +21,7 @@ SavedSearchesHeader.propTypes = {
   header: PropTypes.array.isRequired,
 };
 
-const SavedSearchesList = ({ list }) => {
+const SavedSearchesList = ({ list, toDetail }) => {
   const header = ['date', 'time', 'route-from-here', 'route-here'];
 
   return (
@@ -33,10 +33,12 @@ const SavedSearchesList = ({ list }) => {
         {list.map(row => (
           <SavedRow
             key={row.id}
+            id={row.id}
             from={row.from}
             to={row.to}
             date={row.date}
             time={row.time}
+            toDetail={toDetail}
           />
         ))}
       </tbody>
@@ -46,6 +48,7 @@ const SavedSearchesList = ({ list }) => {
 
 SavedSearchesList.propTypes = {
   list: PropTypes.array.isRequired,
+  toDetail: PropTypes.func,
 };
 
 SavedSearchesList.contextTypes = {
