@@ -3,9 +3,7 @@ import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import SavedRow from './SavedRow';
 
-const SavedSearchesHeader = () => {
-  const header = ['date', 'time', 'route-from-here', 'route-here'];
-
+export const SavedSearchesHeader = ({ header }) => {
   return (
     <tr>
       {header.map(item => {
@@ -19,20 +17,27 @@ const SavedSearchesHeader = () => {
   );
 };
 
+SavedSearchesHeader.propTypes = {
+  header: PropTypes.array.isRequired,
+};
+
 const SavedSearchesList = ({ list }) => {
+  const header = ['date', 'time', 'route-from-here', 'route-here'];
+
   return (
     <table className="saved-search-table">
       <thead>
-        <SavedSearchesHeader />
+        <SavedSearchesHeader header={header} />
       </thead>
       <tbody>
         {list.map(row => (
           <SavedRow
-            key={row.index}
+            key={row.id}
             from={row.from}
             to={row.to}
             date={row.date}
             time={row.time}
+            editable
           />
         ))}
       </tbody>

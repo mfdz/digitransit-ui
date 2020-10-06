@@ -3,15 +3,7 @@ import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import SavedRow from './SavedRow';
 
-const OfferedRidesHeader = () => {
-  const header = [
-    'date',
-    'time',
-    'route-from-here',
-    'route-here',
-    'passenger-number',
-  ];
-
+export const OfferedRidesHeader = ({ header }) => {
   return (
     <tr>
       {header.map(item => {
@@ -25,21 +17,34 @@ const OfferedRidesHeader = () => {
   );
 };
 
+OfferedRidesHeader.propTypes = {
+  header: PropTypes.array.isRequired,
+};
+
 const OfferedRidesList = ({ list }) => {
+  const header = [
+    'date',
+    'time',
+    'route-from-here',
+    'route-here',
+    'passenger-number',
+  ];
+
   return (
     <table className="saved-search-table">
       <thead>
-        <OfferedRidesHeader />
+        <OfferedRidesHeader header={header} />
       </thead>
       <tbody>
         {list.map(row => (
           <SavedRow
-            key={row.index}
+            key={row.id}
             from={row.from}
             to={row.to}
             date={row.date}
             time={row.time}
             passengerNumber={row.passengerNumber}
+            editable
           />
         ))}
       </tbody>
