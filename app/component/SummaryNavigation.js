@@ -162,7 +162,7 @@ class SummaryNavigation extends React.Component {
                 this.props.startTime ||
                 (location.query &&
                   location.query.time &&
-                  moment(location.query.time).unix())
+                  parseInt(`${location.query.time}000`, 0))
               }
               onToggleClick={this.toggleSaveSearch}
             />
