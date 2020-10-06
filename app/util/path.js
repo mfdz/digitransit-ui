@@ -75,7 +75,7 @@ export const getPathWithEndpoints = (origin, destination, tab) =>
 export const getPathWithEndpointObjects = (
   origin,
   destination,
-  tab = TAB_NEARBY,
+  tab = TAB_SAVES,
 ) => {
   const r = isItinerarySearchObjects(origin, destination)
     ? getRoutePath(
@@ -141,7 +141,7 @@ export const navigateTo = ({
   context,
   router,
   base,
-  tab = TAB_NEARBY,
+  tab = TAB_SAVES,
   resetIndex = false,
 }) => {
   let push;
