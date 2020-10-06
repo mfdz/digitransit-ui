@@ -2,20 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import Icon from './Icon';
 
-const renderButtons = () => {
-  return (
-    <>
-      <td>
-        <Icon img="icon-icon_edit" />
-      </td>
-      <td>
-        <Icon img="icon-icon_delete" />
-      </td>
-    </>
-  );
-};
-
-const SavedRow = ({ from, to, date, time, passengerNumber, editable }) => {
+const SavedRow = ({ from, to, date, time, passengerNumber }) => {
   return (
     <tr className="saved-search-row text-center">
       <td className="saved-search-data">{date}</td>
@@ -25,7 +12,9 @@ const SavedRow = ({ from, to, date, time, passengerNumber, editable }) => {
       {passengerNumber !== 0 && (
         <td className="saved-search-data">{passengerNumber}</td>
       )}
-      {editable && renderButtons()}
+      <td>
+        <Icon img="icon-icon_delete" />
+      </td>
     </tr>
   );
 };
@@ -36,12 +25,10 @@ SavedRow.propTypes = {
   date: PropTypes.string.isRequired,
   time: PropTypes.string.isRequired,
   passengerNumber: PropTypes.number,
-  editable: PropTypes.bool,
 };
 
 SavedRow.defaultProps = {
   passengerNumber: 0,
-  editable: false,
 };
 
 SavedRow.contextTypes = {

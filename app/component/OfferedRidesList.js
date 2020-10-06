@@ -44,7 +44,6 @@ const OfferedRidesList = ({ list }) => {
             date={row.date}
             time={row.time}
             passengerNumber={row.passengerNumber}
-            editable
           />
         ))}
       </tbody>
