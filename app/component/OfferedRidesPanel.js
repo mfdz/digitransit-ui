@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import OfferedRidesList from './OfferedRidesList';
 import OfferedRidesDetail from './OfferedRidesDetail';
 
-let currentId;
+let currentRide;
 
 function OfferedRidesPanel() {
   const [renderComponent, setRenderComponent] = useState('list');
@@ -23,8 +23,8 @@ function OfferedRidesPanel() {
       .catch(e => console.log(e));
   }, []);
 
-  const toDetail = id => {
-    currentId = id;
+  const toDetail = ride => {
+    currentRide = ride;
     setRenderComponent('details');
   };
 
@@ -37,7 +37,7 @@ function OfferedRidesPanel() {
       {renderComponent === 'list' ? (
         <OfferedRidesList list={data} toDetail={toDetail} />
       ) : (
-        <OfferedRidesDetail toList={toList} id={currentId} />
+        <OfferedRidesDetail toList={toList} currentRide={currentRide} />
       )}
     </div>
   );

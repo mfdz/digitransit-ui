@@ -6,7 +6,7 @@ const SavedRow = ({ from, to, date, time, seats, toDetail, id }) => {
   return (
     <tr
       className="saved-search-row text-center cursor-pointer"
-      onClick={() => toDetail({ id, from, to, date, time, passengerNumber })}
+      onClick={() => toDetail({ id, from, to, date, time, seats })}
     >
       <td className="saved-search-data">{date}</td>
       <td className="saved-search-data">{time}</td>
