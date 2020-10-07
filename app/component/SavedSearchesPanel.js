@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import SavedSearchesList from './SavedSearchesList';
 import SavedSearchDetail from './SavedSearchDetail';
 
-let currentId;
+let currentSearch;
 
 const SavedSearchesPanel = () => {
   const [renderComponent, setRenderComponent] = useState('list');
@@ -23,8 +23,8 @@ const SavedSearchesPanel = () => {
       .catch(e => console.log(e));
   }, []);
 
-  const toDetail = id => {
-    currentId = id;
+  const toDetail = search => {
+    currentSearch = search;
     setRenderComponent('details');
   };
 
@@ -37,7 +37,7 @@ const SavedSearchesPanel = () => {
       {renderComponent === 'list' ? (
         <SavedSearchesList list={data} toDetail={toDetail} />
       ) : (
-        <SavedSearchDetail toList={toList} id={currentId} />
+        <SavedSearchDetail toList={toList} currentSearch={currentSearch} />
       )}
     </div>
   );
