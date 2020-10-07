@@ -24,7 +24,7 @@ SavedSearchesHeader.propTypes = {
 const SavedSearchesList = ({ list, toDetail }) => {
   const header = ['date', 'time', 'route-from-here', 'route-here'];
 
-  const renderTable = () => (
+  return (
     <table className="saved-search-table">
       <thead>
         <SavedSearchesHeader header={header} />
@@ -43,12 +43,6 @@ const SavedSearchesList = ({ list, toDetail }) => {
         ))}
       </tbody>
     </table>
-  );
-
-  return list.length > 0 ? (
-    renderTable()
-  ) : (
-    <div>You donot have any saved searches yet.</div>
   );
 };
 
