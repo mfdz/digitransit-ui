@@ -39,6 +39,7 @@ const OfferedRidesList = ({ list, toDetail }) => {
         {list.map(row => (
           <SavedRow
             key={row.id}
+            id={row.id}
             from={row.from}
             to={row.to}
             date={row.date}

@@ -136,23 +136,7 @@ export default class SavedSearchDetail extends Component {
       return <Loading />;
     }
     if (formState === 'success') {
-      return (
-        <div className="sidePanelText">
-          <h2>
-            <FormattedMessage
-              id="asd"
-              defaultMessage="Your search was updated successfully!"
-            />
-          </h2>
-          <button
-            className="standalone-btn"
-            type="cancel"
-            onClick={this.props.toList}
-          >
-            Back to the list
-          </button>
-        </div>
-      );
+      this.props.toList();
     }
     return null;
   }

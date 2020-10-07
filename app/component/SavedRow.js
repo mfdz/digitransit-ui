@@ -12,7 +12,7 @@ const SavedRow = ({ from, to, date, time, seats, toDetail, id }) => {
       <td className="saved-search-data">{time}</td>
       <td className="saved-search-data">{from}</td>
       <td className="saved-search-data">{to}</td>
-      {seats !== 0 && <td className="saved-search-data">{seats}</td>}
+      {seats !== undefined && <td className="saved-search-data">{seats}</td>}
       <td>
         <Icon img="icon-icon_delete" />
       </td>
@@ -31,7 +31,7 @@ SavedRow.propTypes = {
 };
 
 SavedRow.defaultProps = {
-  seats: 0,
+  seats: undefined,
 };
 
 SavedRow.contextTypes = {
