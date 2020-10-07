@@ -35,11 +35,14 @@ export default class SavedSearchDetail extends Component {
     this.setState({ formState: 'sending' });
 
     // TODO: change api url
-    fetch('', {
-      method: 'POST',
-      headers: new Headers({ 'content-type': 'application/json' }),
-      body: JSON.stringify(savedSearch),
-    }).then(response => {
+    fetch(
+      'https://static.204.143.47.78.clients.your-server.de/test/about.php',
+      {
+        method: 'POST',
+        headers: new Headers({ 'content-type': 'application/json' }),
+        body: JSON.stringify(savedSearch),
+      },
+    ).then(response => {
       if (response.status === 200) {
         this.setState({ formState: 'success' });
       }
