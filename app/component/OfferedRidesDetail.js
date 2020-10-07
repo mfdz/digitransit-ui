@@ -37,14 +37,11 @@ export default class OfferedRidesDetail extends Component {
     this.setState({ formState: 'sending' });
 
     // TODO: change api url
-    fetch(
-      'https://static.204.143.47.78.clients.your-server.de/test/about.php',
-      {
-        method: 'POST',
-        headers: new Headers({ 'content-type': 'application/json' }),
-        body: JSON.stringify(offeredRide),
-      },
-    ).then(response => {
+    fetch(`http://a70bf5914cdc.ngrok.io/rides/${this.props.currentRide.id}`, {
+      method: 'PUT',
+      headers: new Headers({ 'content-type': 'application/json' }),
+      body: JSON.stringify(offeredRide),
+    }).then(response => {
       if (response.status === 200) {
         this.setState({ formState: 'success' });
       }
@@ -155,6 +152,13 @@ export default class OfferedRidesDetail extends Component {
               defaultMessage="Your search was updated successfully!"
             />
           </h2>
+          <button
+            className="standalone-btn"
+            type="cancel"
+            onClick={this.props.toList}
+          >
+            Back to the list
+          </button>
         </div>
       );
     }

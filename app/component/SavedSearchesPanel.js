@@ -14,13 +14,10 @@ const SavedSearchesPanel = () => {
 
   useEffect(() => {
     // TODO: change server URL
-    fetch(
-      'https://static.204.143.47.78.clients.your-server.de/test/about.php',
-      {
-        method: 'GET',
-        headers: { 'content-type': 'application/json' },
-      },
-    )
+    fetch('http://a70bf5914cdc.ngrok.io/itineraries', {
+      method: 'GET',
+      headers: { 'content-type': 'application/json' },
+    })
       .then(response => {
         if (response.ok) {
           setFormState('success');

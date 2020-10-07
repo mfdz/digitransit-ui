@@ -36,9 +36,9 @@ export default class SavedSearchDetail extends Component {
 
     // TODO: change api url
     fetch(
-      'https://static.204.143.47.78.clients.your-server.de/test/about.php',
+      `http://a70bf5914cdc.ngrok.io/itineraries/${this.props.currentSearch.id}`,
       {
-        method: 'POST',
+        method: 'PUT',
         headers: new Headers({ 'content-type': 'application/json' }),
         body: JSON.stringify(savedSearch),
       },
@@ -144,6 +144,13 @@ export default class SavedSearchDetail extends Component {
               defaultMessage="Your search was updated successfully!"
             />
           </h2>
+          <button
+            className="standalone-btn"
+            type="cancel"
+            onClick={this.props.toList}
+          >
+            Back to the list
+          </button>
         </div>
       );
     }
