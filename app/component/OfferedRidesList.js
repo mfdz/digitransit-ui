@@ -30,7 +30,7 @@ const OfferedRidesList = ({ list, toDetail }) => {
     'passenger-number',
   ];
 
-  const renderTable = () => (
+  return (
     <table className="saved-search-table">
       <thead>
         <OfferedRidesHeader header={header} />
@@ -49,12 +49,6 @@ const OfferedRidesList = ({ list, toDetail }) => {
         ))}
       </tbody>
     </table>
-  );
-
-  return list.length > 0 ? (
-    renderTable()
-  ) : (
-    <div>You donot have any offered rides yet.</div>
   );
 };
 
