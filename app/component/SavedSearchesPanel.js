@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import React, { useState, useEffect } from 'react';
 import SavedSearchesList from './SavedSearchesList';
 import SavedSearchDetail from './SavedSearchDetail';
@@ -11,10 +10,13 @@ const SavedSearchesPanel = () => {
 
   useEffect(() => {
     // TODO: change server URL
-    fetch('http://localhost:3000/itineraries', {
-      method: 'GET',
-      headers: { 'content-type': 'application/json' },
-    })
+    fetch(
+      'https://static.204.143.47.78.clients.your-server.de/test/about.php',
+      {
+        method: 'GET',
+        headers: { 'content-type': 'application/json' },
+      },
+    )
       .then(response => response.json())
       .then(d => (d ? setData(d) : setData([])))
       // eslint-disable-next-line no-console
@@ -39,10 +41,6 @@ const SavedSearchesPanel = () => {
       )}
     </div>
   );
-};
-
-SavedSearchesPanel.contextTypes = {
-  config: PropTypes.object,
 };
 
 export default SavedSearchesPanel;
