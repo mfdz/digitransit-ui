@@ -12,22 +12,25 @@ const SavedSearchesPanel = () => {
   const [formState, setFormState] = useState('pending');
   const userLoggedIn = true;
 
-  useEffect(() => {
-    // TODO: change server URL
-    fetch('http://a70bf5914cdc.ngrok.io/itineraries', {
-      method: 'GET',
-      headers: { 'content-type': 'application/json' },
-    })
-      .then(response => {
-        if (response.ok) {
-          setFormState('success');
-        }
-        return response.json();
+  useEffect(
+    () => {
+      // TODO: change server URL
+      fetch('http://37c2e584ba0a.ngrok.io/itineraries', {
+        method: 'GET',
+        headers: { 'content-type': 'application/json' },
       })
-      .then(d => (d ? setData(d) : setData([])))
-      // eslint-disable-next-line no-console
-      .catch(e => console.log(e));
-  }, []);
+        .then(response => {
+          if (response.ok) {
+            setFormState('success');
+          }
+          return response.json();
+        })
+        .then(d => (d ? setData(d) : setData([])))
+        // eslint-disable-next-line no-console
+        .catch(e => console.log(e));
+    },
+    [renderComponent],
+  );
 
   const toDetail = search => {
     currentSearch = search;
@@ -35,7 +38,9 @@ const SavedSearchesPanel = () => {
   };
 
   const toList = () => {
-    setRenderComponent('list');
+    if (renderComponent !== 'list') {
+      setRenderComponent('list');
+    }
   };
 
   const renderLogin = () => {
