@@ -2,30 +2,20 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import Icon from './Icon';
 
-const renderButtons = () => {
+const SavedRow = ({ from, to, date, time, seats, toDetail, id }) => {
   return (
-    <>
-      <td>
-        <Icon img="icon-icon_edit" />
-      </td>
-      <td>
-        <Icon img="icon-icon_delete" />
-      </td>
-    </>
-  );
-};
-
-const SavedRow = ({ from, to, date, time, passengerNumber, editable }) => {
-  return (
-    <tr className="saved-search-row text-center">
+    <tr
+      className="saved-search-row text-center cursor-pointer"
+      onClick={() => toDetail({ id, from, to, date, time, seats })}
+    >
       <td className="saved-search-data">{date}</td>
       <td className="saved-search-data">{time}</td>
       <td className="saved-search-data">{from}</td>
       <td className="saved-search-data">{to}</td>
-      {passengerNumber !== 0 && (
-        <td className="saved-search-data">{passengerNumber}</td>
-      )}
-      {editable && renderButtons()}
+      {seats !== undefined && <td className="saved-search-data">{seats}</td>}
+      <td>
+        <Icon img="icon-icon_delete" />
+      </td>
     </tr>
   );
 };
@@ -35,13 +25,13 @@ SavedRow.propTypes = {
   to: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
   time: PropTypes.string.isRequired,
-  passengerNumber: PropTypes.number,
-  editable: PropTypes.bool,
+  seats: PropTypes.number,
+  toDetail: PropTypes.func,
+  id: PropTypes.number,
 };
 
 SavedRow.defaultProps = {
-  passengerNumber: 0,
-  editable: false,
+  seats: undefined,
 };
 
 SavedRow.contextTypes = {

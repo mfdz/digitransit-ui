@@ -21,7 +21,7 @@ OfferedRidesHeader.propTypes = {
   header: PropTypes.array.isRequired,
 };
 
-const OfferedRidesList = ({ list }) => {
+const OfferedRidesList = ({ list, toDetail }) => {
   const header = [
     'date',
     'time',
@@ -39,12 +39,13 @@ const OfferedRidesList = ({ list }) => {
         {list.map(row => (
           <SavedRow
             key={row.id}
+            id={row.id}
             from={row.from}
             to={row.to}
             date={row.date}
             time={row.time}
-            passengerNumber={row.passengerNumber}
-            editable
+            seats={row.seats}
+            toDetail={toDetail}
           />
         ))}
       </tbody>
@@ -54,6 +55,7 @@ const OfferedRidesList = ({ list }) => {
 
 OfferedRidesList.propTypes = {
   list: PropTypes.array.isRequired,
+  toDetail: PropTypes.func,
 };
 
 OfferedRidesList.contextTypes = {

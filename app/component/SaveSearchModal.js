@@ -8,7 +8,7 @@ import Loading from './Loading';
 import LoginButton from './LoginButton';
 import SavedSearchesPanel from './SavedSearchesPanel';
 
-export default class SaveSearch extends React.Component {
+export default class SaveSearchModal extends React.Component {
   static contextTypes = {
     intl: intlShape.isRequired,
     config: PropTypes.object.isRequired,

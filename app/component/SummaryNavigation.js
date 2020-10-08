@@ -56,7 +56,7 @@ class SummaryNavigation extends React.Component {
 
   saveSearchModules = {
     Drawer: () => importLazy(import('material-ui/Drawer')),
-    SaveSearch: () => importLazy(import('./SaveSearch')),
+    SaveSearchModal: () => importLazy(import('./SaveSearchModal')),
   };
 
   componentDidMount() {
@@ -138,7 +138,7 @@ class SummaryNavigation extends React.Component {
     const { location } = this.context;
     return (
       <LazilyLoad modules={this.saveSearchModules}>
-        {({ Drawer, SaveSearch }) => (
+        {({ Drawer, SaveSearchModal }) => (
           <Drawer
             className="offcanvas"
             disableSwipeToOpen
@@ -154,7 +154,7 @@ class SummaryNavigation extends React.Component {
             }}
             width={getDrawerWidth(window)}
           >
-            <SaveSearch
+            <SaveSearchModal
               duration={null}
               from={this.props.params.from}
               to={this.props.params.to}
