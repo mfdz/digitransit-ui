@@ -7,7 +7,7 @@ import Loading from './Loading';
 
 let currentRide;
 
-function OfferedRidesPanel(props, context) {
+const OfferedRidesPanel = (props, context) => {
   const [renderComponent, setRenderComponent] = useState('list');
   const [data, setData] = useState([]);
   const [formState, setFormState] = useState('pending');
