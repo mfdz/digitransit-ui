@@ -10,6 +10,10 @@ export default class OfferedRidesDetail extends Component {
     currentRide: PropTypes.object.isRequired,
   };
 
+  static contextTypes = {
+    config: PropTypes.object.isRequired,
+  };
+
   constructor(props) {
     super(props);
     this.state = {
@@ -37,11 +41,16 @@ export default class OfferedRidesDetail extends Component {
     this.setState({ formState: 'sending' });
 
     // TODO: change api url
-    fetch(`http://a70bf5914cdc.ngrok.io/rides/${this.props.currentRide.id}`, {
-      method: 'PUT',
-      headers: new Headers({ 'content-type': 'application/json' }),
-      body: JSON.stringify(offeredRide),
-    }).then(response => {
+    fetch(
+      `${this.context.config.URL.PHPCRUD_URL}/rides/${
+        this.props.currentRide.id
+      }`,
+      {
+        method: 'PUT',
+        headers: new Headers({ 'content-type': 'application/json' }),
+        body: JSON.stringify(offeredRide),
+      },
+    ).then(response => {
       if (response.status === 200) {
         this.setState({ formState: 'success' });
       }

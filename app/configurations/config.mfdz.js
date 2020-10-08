@@ -42,6 +42,7 @@ export default configMerger(walttiConfig, {
     ROADWORKS_MAP: `${API_URL}/map/v1/roadworks-bw-map/`,
     COVID19_MAP: `https://tiles.caresteouvert.fr/public.poi_osm_light/{z}/{x}/{y}.pbf`,
     CITYBIKE_MAP: `${API_URL}/map/v1/regiorad-map/`,
+    PHPCRUD_URL,
   },
 
   availableLanguages: ['de', 'en'],

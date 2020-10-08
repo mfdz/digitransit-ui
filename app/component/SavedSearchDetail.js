@@ -10,6 +10,10 @@ export default class SavedSearchDetail extends Component {
     currentSearch: PropTypes.object.isRequired,
   };
 
+  static contextTypes = {
+    config: PropTypes.object.isRequired,
+  };
+
   constructor(props) {
     super(props);
     this.state = {
@@ -36,7 +40,9 @@ export default class SavedSearchDetail extends Component {
 
     // TODO: change api url
     fetch(
-      `http://a70bf5914cdc.ngrok.io/itineraries/${this.props.currentSearch.id}`,
+      `${this.context.config.URL.PHPCRUD_URL}/itineraries/${
+        this.props.currentSearch.id
+      }`,
       {
         method: 'PUT',
         headers: new Headers({ 'content-type': 'application/json' }),

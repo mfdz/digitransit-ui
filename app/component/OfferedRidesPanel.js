@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import OfferedRidesList from './OfferedRidesList';
 import OfferedRidesDetail from './OfferedRidesDetail';
 import LoginButton from './LoginButton';
@@ -6,7 +7,7 @@ import Loading from './Loading';
 
 let currentRide;
 
-function OfferedRidesPanel() {
+function OfferedRidesPanel(props, context) {
   const [renderComponent, setRenderComponent] = useState('list');
   const [data, setData] = useState([]);
   const [formState, setFormState] = useState('pending');
@@ -15,7 +16,7 @@ function OfferedRidesPanel() {
   useEffect(
     () => {
       // TODO: change server URL
-      fetch('http://37c2e584ba0a.ngrok.io/rides', {
+      fetch(`${context.config.URL.PHPCRUD_URL}/rides`, {
         method: 'GET',
         headers: { 'content-type': 'application/json' },
       })
@@ -82,5 +83,9 @@ function OfferedRidesPanel() {
     </div>
   );
 }
+
+OfferedRidesPanel.contextTypes = {
+  config: PropTypes.object.isRequired,
+};
 
 export default OfferedRidesPanel;

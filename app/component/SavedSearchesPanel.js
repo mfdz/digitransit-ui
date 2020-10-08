@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import SavedSearchesList from './SavedSearchesList';
 import SavedSearchDetail from './SavedSearchDetail';
 import LoginButton from './LoginButton';
@@ -6,7 +7,7 @@ import Loading from './Loading';
 
 let currentSearch;
 
-const SavedSearchesPanel = () => {
+const SavedSearchesPanel = (props, context) => {
   const [renderComponent, setRenderComponent] = useState('list');
   const [data, setData] = useState([]);
   const [formState, setFormState] = useState('pending');
@@ -15,7 +16,7 @@ const SavedSearchesPanel = () => {
   useEffect(
     () => {
       // TODO: change server URL
-      fetch('http://37c2e584ba0a.ngrok.io/itineraries', {
+      fetch(`${context.config.URL.PHPCRUD_URL}/itineraries`, {
         method: 'GET',
         headers: { 'content-type': 'application/json' },
       })
@@ -81,6 +82,10 @@ const SavedSearchesPanel = () => {
       )}
     </div>
   );
+};
+
+SavedSearchesPanel.contextTypes = {
+  config: PropTypes.object.isRequired,
 };
 
 export default SavedSearchesPanel;
