@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React, { Fragment } from 'react';
 import some from 'lodash/some';
 import connectToStores from 'fluxible-addons-react/connectToStores';
+import Cookies from 'js-cookie';
 import {
   getHomeUrl,
   parseLocation,
@@ -15,7 +16,6 @@ import MobileView from './MobileView';
 import DesktopView from './DesktopView';
 import ErrorBoundary from './ErrorBoundary';
 import { DesktopOrMobile } from '../util/withBreakpoint';
-import { getUser } from '../util/apiUtils';
 import setUser from '../action/userActions';
 import { addAnalyticsEvent } from '../util/analyticsUtils';
 
@@ -75,16 +75,15 @@ class TopLevel extends React.Component {
     }`).then(logo => {
       this.setState({ logo: logo.default });
     });
-    if (this.context.config.showLogin && !this.props.user.name) {
-      getUser()
-        .then(user => {
-          this.context.executeAction(setUser, {
-            ...user,
-          });
-        })
-        .catch(() => {
-          this.context.executeAction(setUser, {});
+    if (this.context.config.showLogin && !this.props.user) {
+      const accessToken = Cookies.get('accessToken');
+      if (accessToken) {
+        this.context.executeAction(setUser, {
+          accessToken,
         });
+      } else {
+        this.context.executeAction(setUser, {});
+      }
     }
   }
 
