@@ -18,6 +18,7 @@ const LOCATIONIQ_API_KEY = process.env.LOCATIONIQ_API_KEY;
 const YEAR = 1900 + new Date().getYear();
 const STATIC_MESSAGE_URL =
   process.env.STATIC_MESSAGE_URL || '/assets/messages/message.hb.json';
+const PHPCRUD_URL = process.env.PHPCRUD_URL;
 
 const walttiConfig = require('./config.waltti.js').default;
 
