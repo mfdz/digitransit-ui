@@ -75,11 +75,12 @@ class TopLevel extends React.Component {
     }`).then(logo => {
       this.setState({ logo: logo.default });
     });
-    if (this.context.config.showLogin && !this.props.user) {
+    if (this.context.config.showLogin && !this.props.user.token) {
       const accessToken = Cookies.get('accessToken');
+      console.log(accessToken, this.props.user);
       if (accessToken) {
         this.context.executeAction(setUser, {
-          accessToken,
+          token: accessToken,
         });
       } else {
         this.context.executeAction(setUser, {});

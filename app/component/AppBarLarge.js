@@ -63,7 +63,7 @@ const AppBarLarge = (
         </button>
         <div className="empty-space flex-grow" />
         {config.showLogin &&
-          (!user ? (
+          (!user.token ? (
             <LoginButton />
           ) : (
             <UserInfo
