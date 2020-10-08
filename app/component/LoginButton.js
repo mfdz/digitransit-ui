@@ -7,7 +7,7 @@ import Icon from './Icon';
 export default function LoginButton({ isMobile, className }) {
   return (
     <div className={isMobile ? 'offcanvas-section' : 'right-border'}>
-      <a href="/auth">
+      <a href="/rides">
         <button className={cx('noborder', className)}>
           <div className="top-bar-login">
             <div className="login-icon">
