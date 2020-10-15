@@ -134,7 +134,11 @@ class SummaryNavigation extends React.Component {
               <span className="offcanvas-buttons">
                 {this.context.config.showCarpoolOffer && (
                   <Link
-                    to={`${config.URL.PHPCRUD_URL}/ride_offer.php`}
+                    to={`${config.URL.PHPCRUD_URL}/ride_offer.php?from=${
+                      parseLocation(this.props.params.from).address
+                    }&to=${parseLocation(this.props.params.to).address}&time=${
+                      this.props.startTime
+                    }`}
                     onlyActiveOnIndex
                   >
                     <button
@@ -150,7 +154,11 @@ class SummaryNavigation extends React.Component {
                 )}
                 {this.context.config.showSaveSearch && (
                   <Link
-                    to={`${config.URL.PHPCRUD_URL}/search_search.php`}
+                    to={`${config.URL.PHPCRUD_URL}/save_search.php?from=${
+                      parseLocation(this.props.params.from).address
+                    }&to=${parseLocation(this.props.params.to).address}&time=${
+                      this.props.startTime
+                    }`}
                     onlyActiveOnIndex
                   >
                     <button
