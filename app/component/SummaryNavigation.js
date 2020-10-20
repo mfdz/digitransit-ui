@@ -154,7 +154,7 @@ class SummaryNavigation extends React.Component {
                 )}
                 {this.context.config.showSaveSearch && (
                   <Link
-                    to={`${config.URL.PHPCRUD_URL}/save_search.php?from=${
+                    to={`${config.URL.PHPCRUD_URL}/ride_search.php?from=${
                       parseLocation(this.props.params.from).address
                     }&to=${parseLocation(this.props.params.to).address}&time=${
                       this.props.startTime
