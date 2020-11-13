@@ -1,7 +1,7 @@
 import cx from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Link, routerShape } from 'react-router';
+import { routerShape } from 'react-router';
 
 import { FormattedMessage } from 'react-intl';
 import LazilyLoad, { importLazy } from './LazilyLoad';
@@ -133,13 +133,12 @@ class SummaryNavigation extends React.Component {
             >
               <span className="offcanvas-buttons">
                 {config.showCarpoolOffer && (
-                  <Link
-                    to={`${config.URL.PHPCRUD_URL}/ride_offer.php?from=${
+                  <a
+                    href={`${config.URL.PHPCRUD_URL}/ride_offer.php?from=${
                       parseLocation(this.props.params.from).address
                     }&to=${parseLocation(this.props.params.to).address}&time=${
                       this.props.startTime
                     }`}
-                    onlyActiveOnIndex
                   >
                     <button
                       className="standalone-btn carpool-offer-btn"
@@ -150,16 +149,15 @@ class SummaryNavigation extends React.Component {
                         defaultMessage="Offer ride"
                       />
                     </button>
-                  </Link>
+                  </a>
                 )}
                 {this.context.config.showSaveSearch && (
-                  <Link
-                    to={`/phpcrud/ride_search.php?from=${
+                  <a
+                    href={`${config.URL.PHPCRUD_URL}/ride_search.php?from=${
                       parseLocation(this.props.params.from).address
                     }&to=${parseLocation(this.props.params.to).address}&time=${
                       this.props.startTime
                     }`}
-                    onlyActiveOnIndex
                   >
                     <button
                       className="standalone-btn carpool-offer-btn"
@@ -168,7 +166,7 @@ class SummaryNavigation extends React.Component {
                     >
                       <Icon img="icon-icon_save" />
                     </button>
-                  </Link>
+                  </a>
                 )}
               </span>
             </QuickSettingsPanel>
