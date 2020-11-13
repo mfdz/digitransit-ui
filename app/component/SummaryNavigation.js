@@ -132,9 +132,9 @@ class SummaryNavigation extends React.Component {
               timeSelectorServiceTimeRange={this.props.serviceTimeRange}
             >
               <span className="offcanvas-buttons">
-                {this.context.config.showCarpoolOffer && (
+                {config.showCarpoolOffer && (
                   <Link
-                    to={`/phpcrud/ride_offer.php?from=${
+                    to={`${config.URL.PHPCRUD_URL}/ride_offer.php?from=${
                       parseLocation(this.props.params.from).address
                     }&to=${parseLocation(this.props.params.to).address}&time=${
                       this.props.startTime
